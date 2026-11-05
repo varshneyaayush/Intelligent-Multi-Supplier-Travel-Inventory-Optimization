@@ -1,0 +1,6 @@
+sku,tour_name,tour_description,destination,tour_type,duration_hrs,ticket_price,currency,meeting_location,included_services
+LON-EXP-101,Tower of London Early Access & Crown Jewels Tour,Beat the crowds with early VIP entry to the historic Tower of London led by a Yeoman Warder.,London,Guided Tour,2.5,75.00,USD,Tower Hill Main Gate,Admission Ticket;Yeoman Warder Guide;Headset
+LON-EXP-102,Early Entry Tower of London & Crown Jewels Viewing,Fast-track admission to the Tower of London to view the royal Crown Jewels before crowds arrive.,London,Guided Tour,2.5,62.00,USD,Tower of London Ticket Pavilion,Entry Ticket;Beefeater Escort
+LON-EXP-103,Westminster Abbey & Royal London Walking Tour,Immersive 3-hour walking tour covering Westminster Abbey, Big Ben, Whitehall, and Changing of the Guard.,London,Walking Tour,3.0,48.00,USD,Westminster Station Exit 4,Licensed Guide;Abbey Audio Guide
+LON-EXP-104,Thames River Sunset Speedboat RIB Adventure,High-speed thrills on the River Seine with commentary from James Bond sights to Canary Wharf.,London,Boat Tour,1.0,55.00,USD,London Eye Pier,Speedboat Ride;Life Jacket;Guide
+

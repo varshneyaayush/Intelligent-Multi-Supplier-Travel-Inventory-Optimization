@@ -1,0 +1,7 @@
+external_id,hotel_name,hotel_overview,city_name,country,street_address,lat,lon,stars,room_type,nightly_rate,currency_code,cancellation,amenities_list
+LON-HTL-001,The Savoy London,Iconic 5-star Thames-side British luxury hotel with Gordon Ramsay Grill, indoor swimming pool, and bespoke butler service.,London,United Kingdom,Strand,51.5103,-0.1205,5.0,Deluxe King Room,450.00,USD,Free Cancellation 48h,WiFi;Pool;Spa;Butler Service;Fitness Center
+LON-HTL-002,Savoy Hotel Strand London,Legendary luxury hotel on Strand London offering river views, heated pool, spa, and high tea lounge.,London,United Kingdom,Strand,51.5104,-0.1206,5.0,Deluxe King,395.00,USD,Non-refundable,WiFi;Pool;Spa
+LON-HTL-003,The Savoy London & Spa,Luxury British property on the Strand featuring Michelin-starred restaurants and wellness spa.,London,United Kingdom,Strand London,51.5102,-0.1204,5.0,Deluxe River View King,520.00,USD,Flexible 24h,WiFi;Pool;Spa;Restaurant
+LON-HTL-004,The Ritz London,Opulent neoclassical hotel in Piccadilly London offering Michelin-starred dining and world-famous afternoon tea.,London,United Kingdom,150 Piccadilly,51.5071,-0.1416,5.0,Superior Queen Room,580.00,USD,Free Cancellation 72h,WiFi;Restaurant;Bar;Concierge
+LON-HTL-005,Paddington Boutique Inn,Budget-friendly townhouse hotel located 3 minutes from Paddington Express terminal with free high-speed wifi.,London,United Kingdom,Norfolk Square,51.5168,-0.1741,3.0,Compact Double,85.00,USD,Non-refundable,WiFi;Air Conditioning
+
