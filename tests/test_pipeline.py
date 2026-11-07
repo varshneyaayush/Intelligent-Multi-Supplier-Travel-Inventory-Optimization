@@ -1,3 +1,12 @@
+import os
+import sys
+from pathlib import Path
+
+# Ensure project root is on sys.path
+PROJECT_ROOT = Path(__file__).resolve().parent.parent
+if str(PROJECT_ROOT) not in sys.path:
+    sys.path.insert(0, str(PROJECT_ROOT))
+
 import pytest
 from ai.duplicate_detector import duplicate_engine
 from ai.relationship_engine import relationship_engine
@@ -198,4 +207,8 @@ def test_simulation_engine():
     )
     assert res["simulated_summary"]["eligible_products"] == 1
     assert res["projected_impact"]["inventory_reduction_pct"] == 50.0
+
+if __name__ == "__main__":
+    pytest.main([__file__, "-v"])
+
 

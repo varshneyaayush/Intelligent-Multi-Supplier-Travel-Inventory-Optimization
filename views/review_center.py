@@ -56,6 +56,8 @@ def render_review_center(db: Session):
                     p_b = d.product_b
                     if not p_a or not p_b:
                         continue
+                    p_a_price = f"${p_a.base_price:.2f}" if p_a.base_price is not None else "N/A"
+                    p_b_price = f"${p_b.base_price:.2f}" if p_b.base_price is not None else "N/A"
                     st.markdown(f"""
                     <div class="glass-card">
                         <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
@@ -63,7 +65,7 @@ def render_review_center(db: Session):
                             <span class="badge-pill badge-burgundy">{round(d.overall_confidence*100, 1)}% Match</span>
                         </div>
                         <div style="font-size: 0.78rem; color: #5C5E55; margin-bottom: 8px;">
-                            Price Comparison: ${p_a.base_price:.2f} vs ${p_b.base_price:.2f} &bull; Geo Distance: {f"{d.geo_distance_meters:.1f}m" if d.geo_distance_meters else "Address Match"}
+                            Price Comparison: {p_a_price} vs {p_b_price} &bull; Geo Distance: {f"{d.geo_distance_meters:.1f}m" if d.geo_distance_meters else "Address Match"}
                         </div>
                     """, unsafe_allow_html=True)
 

@@ -83,7 +83,8 @@ def render_relationships(db: Session):
         node_y.append(y)
         is_hotel = (p.product_type == "HOTEL")
         node_colors.append("#590907" if is_hotel else "#E8D2B5")
-        node_text.append(f"{p.name}<br>Supplier: {p.supplier.code if p.supplier else 'UNK'}<br>Price: ${p.base_price:.2f}")
+        p_price = f"${p.base_price:.2f}" if p.base_price is not None else "N/A"
+        node_text.append(f"{p.name}<br>Supplier: {p.supplier.code if p.supplier else 'UNK'}<br>Price: {p_price}")
 
     # Build edge traces
     edge_x = []
@@ -157,6 +158,8 @@ def render_relationships(db: Session):
 
         evidence = r.evidence or {}
         desc_evidence = evidence.get("description", "Algorithmic relationship link")
+        src_price = f"${src.base_price:.2f}" if src.base_price is not None else "N/A"
+        tgt_price = f"${tgt.base_price:.2f}" if tgt.base_price is not None else "N/A"
 
         st.markdown(f"""
         <div class="glass-card">
@@ -176,7 +179,7 @@ def render_relationships(db: Session):
                 <div style="background: rgba(253,252,249,0.7); border: 1px solid rgba(232,210,181,0.7); border-radius: 10px; padding: 10px;">
                     <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
                         <span class="badge-pill badge-sage">{src.supplier.code if src.supplier else 'SUP'}</span>
-                        <strong style="color: #590907;">${src.base_price:.2f}</strong>
+                        <strong style="color: #590907;">{src_price}</strong>
                     </div>
                     <div style="font-weight: 700; font-size: 0.9rem; color: #2A2B27;">{src.name}</div>
                     <div style="font-size: 0.75rem; color: #75776C; margin-top: 2px;">
@@ -193,7 +196,7 @@ def render_relationships(db: Session):
                 <div style="background: rgba(253,252,249,0.7); border: 1px solid rgba(232,210,181,0.7); border-radius: 10px; padding: 10px;">
                     <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
                         <span class="badge-pill badge-sage">{tgt.supplier.code if tgt.supplier else 'SUP'}</span>
-                        <strong style="color: #590907;">${tgt.base_price:.2f}</strong>
+                        <strong style="color: #590907;">{tgt_price}</strong>
                     </div>
                     <div style="font-weight: 700; font-size: 0.9rem; color: #2A2B27;">{tgt.name}</div>
                     <div style="font-size: 0.75rem; color: #75776C; margin-top: 2px;">

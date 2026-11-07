@@ -106,6 +106,7 @@ def render_quality_enrichment(db: Session):
         missing_tags = "".join([f'<span class="badge-pill badge-rose" style="margin-right: 4px; margin-bottom: 4px; font-size: 0.7rem;">Missing: {f}</span>' for f in r.missing_fields])
         suggestions = r.enrichment_suggestions or []
 
+        p_price = f"${p.base_price:.2f}" if p.base_price is not None else "N/A"
         st.markdown(f"""
         <div class="glass-card">
             <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(165,167,155,0.3); padding-bottom: 10px; margin-bottom: 12px;">
@@ -124,7 +125,7 @@ def render_quality_enrichment(db: Session):
                 {p.name}
             </h3>
             <div style="font-size: 0.8rem; color: #5C5E55; margin-bottom: 10px;">
-                📍 {p.city or 'City unknown'}, {p.country or 'Country'} &bull; Type: <strong>{p.product_type}</strong> &bull; Price: <strong>${p.base_price:.2f}</strong>
+                📍 {p.city or 'City unknown'}, {p.country or 'Country'} &bull; Type: <strong>{p.product_type}</strong> &bull; Price: <strong>{p_price}</strong>
             </div>
             
             <!-- Progress Bar -->

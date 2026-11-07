@@ -109,6 +109,11 @@ def render_duplicates(db: Session):
         geo_notes = evidence.get("geo_proximity_notes", "Geo coordinates evaluated")
         sem_model = evidence.get("semantic_model", "Sentence Transformers / TF-IDF")
 
+        coords_a = f"({prod_a.latitude:.4f}, {prod_a.longitude:.4f})" if (prod_a.latitude is not None and prod_a.longitude is not None) else "Coordinates Missing"
+        coords_b = f"({prod_b.latitude:.4f}, {prod_b.longitude:.4f})" if (prod_b.latitude is not None and prod_b.longitude is not None) else "Coordinates Missing"
+        price_str_a = f"${prod_a.base_price:.2f}" if prod_a.base_price is not None else "Price N/A"
+        price_str_b = f"${prod_b.base_price:.2f}" if prod_b.base_price is not None else "Price N/A"
+
         st.markdown(f"""
         <div class="glass-card">
             <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(165,167,155,0.3); padding-bottom: 10px; margin-bottom: 14px;">
@@ -128,13 +133,13 @@ def render_duplicates(db: Session):
                 <div style="background: rgba(253,252,249,0.7); border: 1px solid rgba(232,210,181,0.7); border-radius: 12px; padding: 12px;">
                     <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
                         <span class="badge-pill badge-burgundy">{supp_code_a} &bull; {supp_a}</span>
-                        <strong style="font-size: 1.1rem; color: #590907;">${prod_a.base_price:.2f}</strong>
+                        <strong style="font-size: 1.1rem; color: #590907;">{price_str_a}</strong>
                     </div>
                     <h4 style="margin: 4px 0 6px 0; color: #2A2B27; font-size: 0.95rem; font-weight: 700;">
                         {prod_a.name}
                     </h4>
                     <p style="margin: 0 0 4px 0; font-size: 0.75rem; color: #5C5E55;">
-                        📍 {prod_a.address or 'Address not given'}, {prod_a.city} &bull; ({prod_a.latitude:.4f}, {prod_a.longitude:.4f})
+                        📍 {prod_a.address or 'Address not given'}, {prod_a.city} &bull; {coords_a}
                     </p>
                     <p style="margin: 0; font-size: 0.75rem; color: #75776C;">
                         <strong>Detail:</strong> {prod_a.room_category or prod_a.activity_type or 'Standard'} &bull; <strong>Policy:</strong> {prod_a.cancellation_policy}
@@ -145,13 +150,13 @@ def render_duplicates(db: Session):
                 <div style="background: rgba(253,252,249,0.7); border: 1px solid rgba(232,210,181,0.7); border-radius: 12px; padding: 12px;">
                     <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
                         <span class="badge-pill badge-burgundy">{supp_code_b} &bull; {supp_b}</span>
-                        <strong style="font-size: 1.1rem; color: #590907;">${prod_b.base_price:.2f}</strong>
+                        <strong style="font-size: 1.1rem; color: #590907;">{price_str_b}</strong>
                     </div>
                     <h4 style="margin: 4px 0 6px 0; color: #2A2B27; font-size: 0.95rem; font-weight: 700;">
                         {prod_b.name}
                     </h4>
                     <p style="margin: 0 0 4px 0; font-size: 0.75rem; color: #5C5E55;">
-                        📍 {prod_b.address or 'Address not given'}, {prod_b.city} &bull; ({prod_b.latitude:.4f}, {prod_b.longitude:.4f})
+                        📍 {prod_b.address or 'Address not given'}, {prod_b.city} &bull; {coords_b}
                     </p>
                     <p style="margin: 0; font-size: 0.75rem; color: #75776C;">
                         <strong>Detail:</strong> {prod_b.room_category or prod_b.activity_type or 'Standard'} &bull; <strong>Policy:</strong> {prod_b.cancellation_policy}
